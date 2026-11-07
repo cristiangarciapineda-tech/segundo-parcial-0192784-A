@@ -17,16 +17,18 @@ import java.util.Scanner;
 
 public class CentroReciclaje {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
 
         Scanner leer = new Scanner(System.in);
+        System.out.println("Hello, World!");
 
-        double[] kilogramos = new double[n]; 
+
         int n = cantidadCargas(leer);
+        double[] kilogramos = new double[]; 
         cargaRango(kilogramos, leer);
         int contador1 = cargaEntre(kilogramos);
         int contador2 = cargaMas(kilogramos);
         int total = totalPeso(kilogramos);
+        double mayor = mayorPeso(kilogramos);
         double promedio = promedioKilogramo(total, n);
         int arribaPromedio = superiorPromedio(promedio, kilogramos);
 
@@ -35,6 +37,8 @@ public class CentroReciclaje {
         System.out.println("Cantidad de cargas con un peso superior a 80 kg: " + contador2);
         System.out.println("Peso total recibido durante la jornada: " + total);
         System.out.println("Promedio de peso: " + promedio);
+        System.out.println("Cantidad de cargas cuyo peso fue superior al promedio: " + arribaPromedio);
+        System.out.println("Mayor peso registrado: " + mayor);
 
     }
 
@@ -95,8 +99,8 @@ public class CentroReciclaje {
         return promedio;
     }
 
-    public static int totalKilogramos(double[] kilogramos) {
-        int mayor = kilogramos[0]
+    public static double mayorPeso(double[] kilogramos) {
+        double mayor = kilogramos[0]
         for (int i = 0; i < kilogramos.length; i++) {
             if (kilogramos[i] > mayor) {
                 mayor = kilogramos[i];
@@ -115,5 +119,12 @@ public class CentroReciclaje {
         return arribaPromedio;
     }
 
+    public static int primerMayor(double[] kilogramos, double mayor) {
+        int mayorCarga = 0;
+        for (int i = 0; i < kilogramos.length; i++) {
+
+        }
+        return mayorCarga;
+    }
 
 }
