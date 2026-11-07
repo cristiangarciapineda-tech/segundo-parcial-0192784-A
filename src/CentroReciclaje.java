@@ -21,8 +21,21 @@ public class CentroReciclaje {
 
         Scanner leer = new Scanner(System.in);
 
-        double[] kilogramos = new double[]; 
+        double[] kilogramos = new double[n]; 
         int n = cantidadCargas(leer);
+        cargaRango(kilogramos, leer);
+        int contador1 = cargaEntre(kilogramos);
+        int contador2 = cargaMas(kilogramos);
+        int total = totalPeso(kilogramos);
+        double promedio = promedioKilogramo(total, n);
+        int arribaPromedio = superiorPromedio(promedio, kilogramos);
+
+
+        System.out.println("Cantidad de cargas entre 5 y 80 kg: " + contador1);
+        System.out.println("Cantidad de cargas con un peso superior a 80 kg: " + contador2);
+        System.out.println("Peso total recibido durante la jornada: " + total);
+        System.out.println("Promedio de peso: " + promedio);
+
     }
 
     public static int cantidadCargas(Scanner leer) {
@@ -37,15 +50,70 @@ public class CentroReciclaje {
         return n;
     }
 
-    public static void cargaEntre(int[] kilogramos, Scanner leer) {
+    public static void cargaRango(double[] kilogramos, Scanner leer) {
         for (int i = 0; i < kilogramos.length; i++) {
             do {
                 System.out.println("Ingrese el peso de la carga " + (i + 1));
-                kilogramos[] = leer.nextDouble();
-                if (kilogramos[i]) {
-                    
+                kilogramos[i] = leer.nextDouble();
+                if (kilogramos[i] < 5 && kilogramos[i] > 200) {
+                    System.err.println("Error. El peso debe estar entre 5kg y 200kg");
                 }
-            } while (condition);
+            } while (kilogramos[i] < 5 && kilogramos[i] > 200);
         }
     }
+
+    public static int cargaEntre(double[] kilogramos) {
+        int contador1 = 0;
+        for (int i = 0; i < kilogramos.length; i++) {
+            if (kilogramos[i] >= 5 && kilogramos[i] <= 80) {
+                contador1++;
+            }
+        }
+        return contador1;
+    }
+
+    public static int cargaMas(double[] kilogramos) {
+        int contador2 = 0;
+        for (int i = 0; i < kilogramos.length; i++) {
+            if (kilogramos[i] > 80) {
+                contador2++;
+            }
+        }
+        return contador2;
+    }
+
+    public static int totalPeso(int[] kilogramos) {
+        int total = 0;
+        for (int i = 0; i < kilogramos.length; i++) {
+            total += kilogramos[i];
+        }
+        return total;
+    }
+
+    public static double promedioKilogramo(int total, int n) {
+        double promedio = (double) total / n;
+        return promedio;
+    }
+
+    public static int totalKilogramos(double[] kilogramos) {
+        int mayor = kilogramos[0]
+        for (int i = 0; i < kilogramos.length; i++) {
+            if (kilogramos[i] > mayor) {
+                mayor = kilogramos[i];
+            }
+        }
+        return mayor;
+    }
+
+    public static int superiorPromedio(double promedio, double[] kilogramos) {
+        int arribaPromedio = 0;
+        for (int i = 0; i < kilogramos.length; i++) {
+            if (kilogramos[i] > promedio) {
+                arribaPromedio++;
+            }
+        }
+        return arribaPromedio;
+    }
+
+
 }
